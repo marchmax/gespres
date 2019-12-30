@@ -8,4 +8,10 @@ class AlbaraItems extends Model
 {
     //
     protected $table = 'detallalbara';
+    public $timestamps = false;
+
+    public function albara()
+    {
+        return $this->belongsTo('App\Albara');
+    }
 }

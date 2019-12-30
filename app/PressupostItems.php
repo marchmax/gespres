@@ -8,4 +8,5 @@ class PressupostItems extends Model
 {
     //
     protected $table = 'detallpress';
+    public $timestamps = false;
 }

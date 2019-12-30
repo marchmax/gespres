@@ -8,4 +8,5 @@ class Factura extends Model
 {
     //
     protected $table = 'factura';
+    public $timestamps = false;
 }

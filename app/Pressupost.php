@@ -8,4 +8,5 @@ class Pressupost extends Model
 {
     //
     protected $table = 'pressupost';
+    public $timestamps = false;
 }
