@@ -25,3 +25,5 @@ Route::get('users/delete/{id}', 'UsersController@destroy');
 
 
 Route::resource('albarans', 'AlbaraController');
+Route::resource('clients', 'ClientController');
+Route::resource('pressupostos', 'PressupostController');

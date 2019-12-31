@@ -17,9 +17,15 @@ class AlbaraController extends Controller
      */
     public function index()
     {
-        $albara = Albara::has('items')->get();
+        //$albara = Albara::has('items')->get();
         //$albara = Albara::find(283)->items()->where('quantitat','>','3')->get();
-        return Response::json($albara);
+        //return Response::json($albara);
+        //return view('albarans.index', compact('albara'));
+
+        $albara = Albara::has('items')->paginate(5);
+
+        return view('albarans.index',compact('albara'))
+            ->with('i', (request()->input('page', 1) - 1) * 5);
     }
 
     /**
