@@ -8,6 +8,20 @@ class Client extends Model
 {
     //
     protected $table = 'client';
-    protected $primaryKey = 'idclient';
     public $timestamps = false;
+
+    public function albarans()
+    {
+        return $this->hasMany('App\Albara');
+    }
+
+    public function pressupostos()
+    {
+        return $this->hasMany('App\Pressupost');
+    }
+
+    public function factures()
+    {
+        return $this->hasMany('App\Factura');
+    }
 }

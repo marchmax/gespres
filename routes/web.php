@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('ajax-crud-list', 'UsersController');
-Route::post('ajax-crud-list/store', 'UsersController@store');
-Route::get('ajax-crud-list/delete/{id}', 'UsersController@destroy');
+Route::resource('users', 'UsersController');
+Route::post('users/store', 'UsersController@store');
+Route::get('users/delete/{id}', 'UsersController@destroy');
+
+
+Route::resource('albarans', 'AlbaraController');

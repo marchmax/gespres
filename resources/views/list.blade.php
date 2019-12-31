@@ -80,7 +80,7 @@ var SITEURL = 'http://localhost:8000/'
          processing: true,
          serverSide: true,
          ajax: {
-          url: SITEURL + "ajax-crud-list",
+          url: SITEURL + "users",
           type: 'GET',
          },
          columns: [
@@ -104,7 +104,7 @@ var SITEURL = 'http://localhost:8000/'
    /* When click edit user */
     $('body').on('click', '.edit-user', function () {
       var user_id = $(this).data('id');
-      $.get('ajax-crud-list/' + user_id +'/edit', function (data) {
+      $.get('users/' + user_id +'/edit', function (data) {
          $('#name-error').hide();
          $('#email-error').hide();
          $('#userCrudModal').html("Edit User");
@@ -122,7 +122,7 @@ var SITEURL = 'http://localhost:8000/'
 
         $.ajax({
             type: "get",
-            url: SITEURL + "ajax-crud-list/delete/"+user_id,
+            url: SITEURL + "users/delete/"+user_id,
             success: function (data) {
             var oTable = $('#laravel_datatable').dataTable();
             oTable.fnDraw(false);
@@ -144,7 +144,7 @@ if ($("#userForm").length > 0) {
 
       $.ajax({
           data: $('#userForm').serialize(),
-          url: SITEURL + "ajax-crud-list/store",
+          url: SITEURL + "users/store",
           type: "POST",
           dataType: 'json',
           success: function (data) {

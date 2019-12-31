@@ -10,12 +10,15 @@ class Albara extends Model
     protected $table = 'albara';
     public $timestamps = false;
 
+    protected $with = ['client'];
+    protected $fillable = ['numalbara','total','dataalbara','client_id','estat','any','iva','observacions','subtotal'];
+
     public function client()
     {
-        return $this->hasOne('App\Client');
+        return $this->belongsTo('App\Client');
     }
 
-    public function albaraitems()
+    public function items()
     {
         return $this->hasMany('App\AlbaraItems');
     }
