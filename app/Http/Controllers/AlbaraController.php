@@ -75,12 +75,6 @@ class AlbaraController extends Controller
         return redirect()->route('albarans.index')
                 ->with('success','Albarà creat successfully.');
 
-        /*
-        $albaraId = $request->albara_id;
-        $albara   =   Albara::updateOrCreate(['id' => $albaraId],
-        ['numalbara' => $request->numalbara, 'total' => $request->total, 'dataalbara' => $request->dataalbara,'client_id' => $request->client_id, 'estat' => $request->estat, 'any' => $request->any, 'iva' => $request->iva, 'observacions' => $request->observacions, 'subtotal' => $request->subtotal]);
-        return Response::json($albara);
-        */
     }
 
     /**
@@ -93,10 +87,7 @@ class AlbaraController extends Controller
     {
         //
         $albara = Albara::find($id);
-        $items = Albara::find($id)->items;
-        //return Response::json($items);
-
-        return view('albarans.show',compact('albara','items'));
+        return view('albarans.show',compact('albara'));
     }
 
     /**
@@ -136,6 +127,7 @@ class AlbaraController extends Controller
     {
         //
         $albara = Albara::where('id',$id)->delete();
-        return Response::json($albara);
+        return redirect()->route('albarans.index')
+                ->with('success','Albarà eliminat.');
     }
 }

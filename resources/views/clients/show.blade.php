@@ -67,7 +67,7 @@
 
 </div>
     </div>
-<div class="pull-right">
+<div class="float-right">
     <a class="btn btn-warning" href="{{ route('clients.index') }}"> Torna</a>
 </div>
 </div>

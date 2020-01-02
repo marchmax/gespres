@@ -9,8 +9,8 @@
 <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Llista d'Albarans
-                        <a class="btn btn-success" href="{{ route('albarans.create') }}"> Create New Albarà</a>
+                <div class="card-header"><h4>Llista d'Albarans
+                        <a class="btn btn-success float-right" href="{{ route('albarans.create') }}"> Crea albarà nou</a></h4>
                 </div>
                 <div class="card-body">
 
@@ -22,6 +22,7 @@
                         <th>Data Albarà</th>
                         <th>Client</th>
                         <th>Total</th>
+                        <th>Accions</th>
 
                     </tr>
                     </thead>
@@ -32,6 +33,18 @@
                         <td>{{ $product->dataalbara }}</td>
                         <td>{{ $product->client->nom }}</td>
                         <td>{{ $product->total }}</td>
+                        <td><a href="{{ route('albarans.show',$product->id) }}" data-toggle="tooltip"  data-id="{{ $product->id }}" data-original-title="Mostra" class="edit btn btn-info edit-user">
+                                Mostra
+                            </a>
+                            <a href="{{ route('albarans.edit',$product->id) }}" data-toggle="tooltip"  data-id="{{ $product->id }}" data-original-title="Edita" class="edit btn btn-success edit-user">
+                                Edita
+                            </a>
+                            <form action="{{ route('albarans.destroy', $product->id)}}" method="post">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger" type="submit">Esborra</button>
+                            </form>
+                        </td>
                     </tr>
                     @endforeach
                     </table>
