@@ -10,6 +10,8 @@ class Client extends Model
     protected $table = 'client';
     public $timestamps = false;
 
+    protected $guarded = [];
+
     public function albarans()
     {
         return $this->hasMany('App\Albara');

@@ -4,7 +4,7 @@
 <div class="row justify-content-center">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-header">Llista de clients <a href="javascript:void(0)" class="btn btn-info ml-3 pull-right" id="create-new-user">Nou Client</a></div>
+                <div class="card-header">Llista de clients <a href="{{ route('clients.create') }}" class="btn btn-info ml-3 pull-right" >Nou Client</a></div>
                 <div class="card-body">
 
                 <table class="table table-bordered table-striped" id="laravel_datatable">

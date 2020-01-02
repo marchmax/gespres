@@ -17,7 +17,7 @@ class ClientController extends Controller
         //
         if(request()->ajax()) {
             return datatables()->of(Client::select('*')->where('estat',0))
-            ->addColumn('action', 'action_button')
+            ->addColumn('action', 'clients.action_button')
             ->rawColumns(['action'])
             ->addIndexColumn()
             ->make(true);
@@ -33,6 +33,7 @@ class ClientController extends Controller
     public function create()
     {
         //
+        return view('clients.create');
     }
 
     /**
@@ -44,6 +45,15 @@ class ClientController extends Controller
     public function store(Request $request)
     {
         //
+        $request->validate([
+            'nom' => 'required',
+            'NIF' => 'required',
+        ]);
+
+        Client::create($request->except('_token'));
+
+        return redirect()->route('clients.index')
+                        ->with('success','Client creat correctament.');
     }
 
     /**
@@ -55,6 +65,8 @@ class ClientController extends Controller
     public function show($id)
     {
         //
+        $client = Client::find($id);
+        return view('clients.show',compact('client'));
     }
 
     /**
@@ -66,6 +78,9 @@ class ClientController extends Controller
     public function edit($id)
     {
         //
+        $where = array('id' => $id);
+        $client  = Client::where($where)->first();
+        return view('clients.edit',compact('client'));
     }
 
     /**
@@ -89,5 +104,8 @@ class ClientController extends Controller
     public function destroy($id)
     {
         //
+        $client = Client::where('id',$id)->delete();
+        return redirect()->route('clients.index')
+                        ->with('success','Client esborrat correctament.');
     }
 }
