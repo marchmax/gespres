@@ -17,13 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
 
-Route::resource('users', 'UsersController');
-Route::post('users/store', 'UsersController@store');
-Route::get('users/delete/{id}', 'UsersController@destroy');
+Route::resource('users', 'UsersController')->middleware('auth');
+Route::post('users/store', 'UsersController@store')->middleware('auth');
+Route::get('users/delete/{id}', 'UsersController@destroy')->middleware('auth');
 
 
-Route::resource('albarans', 'AlbaraController');
-Route::resource('clients', 'ClientController');
-Route::resource('pressupostos', 'PressupostController');
+Route::resource('albarans', 'AlbaraController')->middleware('auth');
+Route::resource('clients', 'ClientController')->middleware('auth');
+Route::resource('pressupostos', 'PressupostController')->middleware('auth');
