@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Albara;
+use App\AlbaraItems;
+use App\Client;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
@@ -36,7 +38,8 @@ class AlbaraController extends Controller
     public function create()
     {
         //
-        return view('albarans.create');
+        $clients = Client::pluck('nom', 'id');
+        return view('albarans.create',compact('clients'));
     }
 
     /**
@@ -53,10 +56,25 @@ class AlbaraController extends Controller
             'total' => 'required',
         ]);
 
-        Albara::create($request->all());
+        $albara = Albara::create($request->except('_token'));
+
+        if ($albara->save()){
+            $id = $albara->id;
+            foreach($request->producte as $key =>$producte){
+                $data = array(
+                            'albara_id'=>$id,
+                            'producte'=>$request->producte [$key],
+                            'quantitat'=>$request->quantitat [$key],
+                            'preu'=>$request->preu [$key],
+                            'total'=>$request->totals [$key],
+                );
+            AlbaraItems::insert($data);
+            }
+        }
 
         return redirect()->route('albarans.index')
-                        ->with('success','Albarà creat successfully.');
+                ->with('success','Albarà creat successfully.');
+
         /*
         $albaraId = $request->albara_id;
         $albara   =   Albara::updateOrCreate(['id' => $albaraId],
