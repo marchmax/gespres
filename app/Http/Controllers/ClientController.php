@@ -93,6 +93,23 @@ class ClientController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $request->validate([
+            'nom'=>'required',
+            'NIF'=>'required'
+        ]);
+
+        $contact = Client::find($id);
+        $contact->nom =  $request->get('nom');
+        $contact->NIF = $request->get('NIF');
+        $contact->mail = $request->get('mail');
+        $contact->adresa = $request->get('adresa');
+        $contact->poblacio = $request->get('poblacio');
+        $contact->codipostal = $request->get('codipostal');
+        $contact->telefon = $request->get('telefon');
+        $contact->nota = $request->get('nota');
+        $contact->save();
+
+        return redirect('clients')->with('success', 'Client actualitzat!');
     }
 
     /**
@@ -106,6 +123,6 @@ class ClientController extends Controller
         //
         $client = Client::where('id',$id)->delete();
         return redirect()->route('clients.index')
-                        ->with('success','Client esborrat correctament.');
+                        ->with('success','Client esborrat!.');
     }
 }

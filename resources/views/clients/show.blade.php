@@ -3,12 +3,13 @@
 <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header"><h4> Client </h4>
+                <div class="card-header bg-success"><h4> Client - {{ $client->nom }} - ({{ $client->NIF }}) </h4>
                 </div>
                 <div class="card-body">
 
     <div class="row">
         <div class="col-md-6">
+        <h4> Dades </h4>
         <div class="col-xs-12 col-sm-12 col-md-12">
             <div class="form-group">
                 <strong>Nom:</strong>
@@ -58,10 +59,11 @@
     </div>
 
 <div class="col-md-4">
-    <p> Accions </p>
+    <h4> Accions </h4>
 <a href="#" data-toggle="tooltip"  class="edit btn btn-info edit-user"> Mostra albarans del client </a>
 <a href="#" data-toggle="tooltip"   class="edit btn btn-success edit-user"> Veure pressupostos del client </a>
-<a href="#"  data-toggle="tooltip"  class="delete btn btn-danger"> ... </a>
+<a href="#"  data-toggle="tooltip"  class="delete btn btn-danger"> Recupera altra informació del client </a>
+<a href="{{ route('clients.edit',$client->id) }}" data-toggle="tooltip"   class="edit btn btn-success edit-user"> Edita les dades del client </a>
 
 </div>
     </div>
