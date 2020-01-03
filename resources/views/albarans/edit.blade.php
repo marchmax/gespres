@@ -57,7 +57,7 @@
                     <div class="col-xs-12 col-sm-12 col-md-12">
                         <div class="form-group">
                             <strong>Total:</strong>
-                            <input type="text" name="total"  class="form-control" placeholder="" value="{{$albara->total}}">
+                            <input type="text" name="total" id="total" class="form-control" placeholder="" value="{{$albara->total}}">
                         </div>
                     </div>
                 </div>
@@ -91,12 +91,12 @@
                         </thead>
                         <tbody>
                             @foreach($albara->items as $it)
-                            <tr>
+                            <tr class="item">
                                 <td><input type="hidden" name="item_id[]" class="form-control" placeholder="" value="{{$it->id}}"></td>
                                 <td><input type="text" name="producte[]" class="form-control" placeholder="" value="{{$it->producte}}"></td>
-                                <td><input type="text" name="preu[]" class="form-control" placeholder="" value="{{$it->quantitat}}"></td>
-                                <td><input type="text" name="quantitat[]" class="form-control" placeholder="" value="{{$it->preu}}"></td>
-                                <td><input type="text" name="totals[]" class="form-control" placeholder="" value="{{$it->total}}"></td>
+                                <td><input type="text" name="quantitat[]" class="form-control " placeholder="" value="{{$it->quantitat}}"></td>
+                                <td><input type="text" name="preu[]" class="form-control " placeholder="" value="{{$it->preu}}"></td>
+                                <td><input type="text" name="totals[]" class="form-control " placeholder="" value="{{$it->total}}"></td>
                                 <td  style="text-align: center" class="remove">
                                     <a href="#" class="btn btn-danger " onclick="deleteRow()"> -
                                         <i class="fa fa-times"></i>
@@ -118,6 +118,21 @@
     </div>
 </div>
 <script>
+    window.onkeyup=function() {
+
+    var items = document.querySelectorAll(".item");
+    var itemsArray = Array.prototype.slice.call(items,0);
+    var unit, rate, total, net = 0;
+    itemsArray.forEach(function(el){
+        unit = el.querySelector('input[name="preu[]"]').value;
+        rate = el.querySelector('input[name="quantitat[]"]').value;
+        total = unit * rate;
+        el.querySelector('input[name="totals[]"]').value = total;
+        net+=total;
+    });
+    document.getElementById('total').value=net;
+    }
+
     function addRow()
     {
         var tr='<tr>'+

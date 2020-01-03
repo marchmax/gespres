@@ -78,8 +78,8 @@
             <thead>
             <tr>
                 <th>Producte</th>
-                <th>Preu</th>
                 <th>Quantitat</th>
+                <th>Preu</th>
                 <th>Total</th>
                 <th style="text-align: center;background: #eee">
                     <a href="#" onclick="addRow()"> +
@@ -92,8 +92,8 @@
 
             <tr>
                 <td><input type="text" name="producte[]" class="form-control" placeholder=""></td>
-                <td><input type="text" name="preu[]" class="form-control" placeholder=""></td>
                 <td><input type="text" name="quantitat[]" class="form-control" placeholder=""></td>
+                <td><input type="text" name="preu[]" class="form-control" placeholder=""></td>
                 <td><input type="text" name="totals[]" class="form-control" placeholder=""></td>
                 <td  style="text-align: center"  onclick="cannotdelete()">
                     <a href="#" class="btn btn-danger remove"> -
