@@ -36,4 +36,14 @@ class LoginController extends Controller
     {
         $this->middleware('guest')->except('logout');
     }
+
+    /**
+     * canviem email per usuari
+     *
+     * @return void
+     */
+    public function username()
+    {
+        return 'username';
+    }
 }
