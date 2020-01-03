@@ -115,6 +115,39 @@ class AlbaraController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $albara = Albara::findOrFail($id);
+        $albara->dataalbara = $request->get('dataalbara');
+        $albara->estat = $request->get('estat');
+        $albara->any = $request->get('any');
+        $albara->total = $request->get('total');
+        $albara->observacions = $request->get('observacions');
+
+        if ($albara->save()){
+            $id = $albara->id;
+
+            $ar = array_filter($request->item_id);
+            foreach ($albara->items as $key=>$value){
+                if(!in_array($value->id, $ar)){
+                    AlbaraItems::where('id',$value->id)->delete();
+                }
+
+            }
+
+            foreach($request->producte as $key =>$producte){
+                $item = AlbaraItems::findOrNew($request->item_id [$key]);
+                $item->albara_id = $id;
+                $item->producte = $request->producte [$key];
+                $item->quantitat = $request->quantitat [$key];
+                $item->preu = $request->preu [$key];
+                $item->total = $request->totals [$key];
+                $item->save();
+            }
+        }
+
+        return redirect()->route('albarans.index')
+                ->with('success','Albarà actualitzat.');
+
+
     }
 
     /**
@@ -130,4 +163,6 @@ class AlbaraController extends Controller
         return redirect()->route('albarans.index')
                 ->with('success','Albarà eliminat.');
     }
+
+
 }

@@ -1,49 +1,148 @@
-@extends('albarans.layout')
-
+@extends('layouts.app')
 @section('content')
-    <div class="row">
-        <div class="col-lg-12 margin-tb">
-            <div class="pull-left">
-                <h2>Edit Product</h2>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
+<div class="row justify-content-center">
+        <div class="col-md-10">
+            <div class="card ">
+                <div class="card-header bg-warning"><h4> Edita albarà <small>{{$albara->any}}-{{$albara->numalbara}}</small><a class="btn btn-info float-right" href="{{ route('albarans.index') }}"> Torna</a></h4>
+                </div>
+                <div class="card-body">
+                <form action="{{ route('albarans.update',$albara->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Client: </strong>
+                            <input type="text" name="client" disabled class="form-control" placeholder="" value="{{$albara->client->nom}}">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Codi:</strong>
+                            <input type="text" name="numalbara" disabled class="form-control" placeholder="" value="{{$albara->numalbara}}">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Data albarà:</strong>
+                            <input type="text" name="dataalbara"  class="form-control" placeholder="" value="{{$albara->dataalbara}}">
+                        </div>
+                    </div>
+
+                </div>
+                <div class="col-md-4">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Estat:</strong>
+                            <input type="text" name="estat"  class="form-control" placeholder="" value="{{$albara->estat}}">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Any:</strong>
+                            <input type="text" name="any"   class="form-control" placeholder="" value="{{$albara->any}}">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Total:</strong>
+                            <input type="text" name="total"  class="form-control" placeholder="" value="{{$albara->total}}">
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="col-xs-12 col-sm-12 col-md-12">
+                        <div class="form-group">
+                            <strong>Observacions:</strong>
+                            <textarea class="form-control" style="height:150px"  name="observacions" placeholder="">{{$albara->observacions}}</textarea>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="pull-right">
-                <a class="btn btn-primary" href="{{ route('albarans.index') }}"> Back</a>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <legend>Detall</legend>
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                            <td></td>
+                            <td>Producte</td>
+                            <td>Quantitat</td>
+                            <td>Preu</td>
+                            <td>Total</td>
+                            <th style="text-align: center;background: #eee">
+                                <a href="#" onclick="addRow()"> +
+                                    <i class="glyphicon glyphicon-plus"></i>
+                                </a>
+                            </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach($albara->items as $it)
+                            <tr>
+                                <td><input type="hidden" name="item_id[]" class="form-control" placeholder="" value="{{$it->id}}"></td>
+                                <td><input type="text" name="producte[]" class="form-control" placeholder="" value="{{$it->producte}}"></td>
+                                <td><input type="text" name="preu[]" class="form-control" placeholder="" value="{{$it->quantitat}}"></td>
+                                <td><input type="text" name="quantitat[]" class="form-control" placeholder="" value="{{$it->preu}}"></td>
+                                <td><input type="text" name="totals[]" class="form-control" placeholder="" value="{{$it->total}}"></td>
+                                <td  style="text-align: center" class="remove">
+                                    <a href="#" class="btn btn-danger " onclick="deleteRow()"> -
+                                        <i class="fa fa-times"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-12 col-md-12 text-center float-right">
+              <button type="submit" class="btn btn-primary">Actualitza</button>
+            </div>
+            </form>
             </div>
         </div>
     </div>
+</div>
+<script>
+    function addRow()
+    {
+        var tr='<tr>'+
+                '<td><input type="hidden" name="item_id[]" class="form-control quantity"></td>'+
+                '<td><input type="text" name="producte[]" class="form-control producte"></td>'+
+                '<td><input type="text" name="quantitat[]" class="form-control quantity"></td>'+
+                '<td><input type="text" name="preu[]" class="form-control costprice"></td>'+
+                '<td><input type="text" name="totals[]" class="form-control quantity"></td>'+
+                '<td class="remove" style="text-align: center"><a href="#" class="btn btn-danger" onclick="deleteRow()"> - <i class="fa fa-times"></i></a></td>'+
+                '</tr>';
 
-    @if ($errors->any())
-        <div class="alert alert-danger">
-            <strong>Whoops!</strong> There were some problems with your input.<br><br>
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
-        </div>
-    @endif
+        $('tbody').append(tr);
+    }
 
-    <form action="{{ route('albarans.update',$product->id) }}" method="POST">
-        @csrf
-        @method('PUT')
+    function deleteRow()
+    {
+        $(document).on('click', '.remove', function()
+        {
+            $(this).parent('tr').remove();
+        });
+    }
 
-         <div class="row">
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Name:</strong>
-                    <input type="text" name="numalbara" value="{{ $product->numalbara }}" class="form-control" placeholder="Name">
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12">
-                <div class="form-group">
-                    <strong>Detail:</strong>
-                    <textarea class="form-control" style="height:150px" name="total" placeholder="Detail">{{ $product->total }}</textarea>
-                </div>
-            </div>
-            <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-              <button type="submit" class="btn btn-primary">Submit</button>
-            </div>
-        </div>
-
-    </form>
+    function cannotdelete()
+    {
+        alert('No es pot eliminar la primera fila !!!')
+    }
+</script>
 @endsection
