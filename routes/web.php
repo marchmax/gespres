@@ -25,5 +25,6 @@ Route::get('users/delete/{id}', 'UsersController@destroy')->middleware('auth');
 
 
 Route::resource('albarans', 'AlbaraController')->middleware('auth');
+Route::get('albarans/pdf/{id}','AlbaraController@pdf')->name('albarans.pdf')->middleware('auth');
 Route::resource('clients', 'ClientController')->middleware('auth');
 Route::resource('pressupostos', 'PressupostController')->middleware('auth');

@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel
+                    <img src="images/logo_2.png" height="100%" >
                 </div>
 
                 <div class="links">

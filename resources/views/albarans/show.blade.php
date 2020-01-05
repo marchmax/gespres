@@ -13,7 +13,7 @@
 <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header"><h4> Albarà <small>{{$albara->any}}-{{$albara->numalbara}}</small><a class="btn btn-warning float-right" href="{{ route('albarans.index') }}"> Torna</a></h4>
+                <div class="card-header"><h4> Albarà <small>{{$albara->any}}-{{$albara->numalbara}}</small><a class="btn btn-warning float-right" href="{{ route('albarans.index') }}"><i class="fas fa-hand-point-left"></i> Torna</a></h4>
                 </div>
                 <div class="card-body">
             <div class="row">

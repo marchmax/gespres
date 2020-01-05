@@ -16,7 +16,7 @@
             <div class="card">
                 <div class="card-header"><h4> Crea un nou albarà </h4>
                 <div class="pull-right">
-                        <a class="btn btn-warning" href="{{ route('albarans.index') }}"> Torna</a>
+                        <a class="btn btn-warning" href="{{ route('albarans.index') }}"> <i class="fas fa-hand-point-left"></i>Torna</a>
                     </div>
                 </div>
                 <div class="card-body">

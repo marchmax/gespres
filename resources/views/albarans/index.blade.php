@@ -10,7 +10,7 @@
         <div class="col-md-12">
             <div class="card">
                 <div class="card-header"><h4>Llista d'Albarans
-                        <a class="btn btn-success float-right" href="{{ route('albarans.create') }}"> Crea albarà nou</a></h4>
+                        <a class="btn btn-success float-right" href="{{ route('albarans.create') }}"> Crea albarà <i class="fas fa-plus-square"></i></a></h4>
                 </div>
                 <div class="card-body">
 
@@ -33,16 +33,19 @@
                         <td>{{ $product->dataalbara }}</td>
                         <td>{{ $product->client->nom }}</td>
                         <td>{{ $product->total }}</td>
-                        <td><a href="{{ route('albarans.show',$product->id) }}" data-toggle="tooltip"  data-id="{{ $product->id }}" data-original-title="Mostra" class="edit btn btn-info edit-user">
-                                Mostra
+                        <td><a href="{{ route('albarans.show',$product->id) }}" data-toggle="tooltip"  data-id="{{ $product->id }}" data-original-title="Mostra" class="edit btn btn-success edit-user">
+                        <i class="fas fa-eye"></i>
                             </a>
-                            <a href="{{ route('albarans.edit',$product->id) }}" data-toggle="tooltip"  data-id="{{ $product->id }}" data-original-title="Edita" class="edit btn btn-success edit-user">
-                                Edita
+                            <a href="{{ route('albarans.pdf',$product->id) }}" data-toggle="tooltip"  data-id="{{ $product->id }}" data-original-title="Mostra" class="edit btn btn-info edit-user">
+                            <i class="fas fa-file-pdf"></i>
+                            </a>
+                            <a href="{{ route('albarans.edit',$product->id) }}" data-toggle="tooltip"  data-id="{{ $product->id }}" data-original-title="Edita" class="edit btn btn-warning edit-user">
+                            <i class="fas fa-edit"></i>
                             </a>
                             <form action="{{ route('albarans.destroy', $product->id)}}" method="post">
                                 @csrf
                                 @method('DELETE')
-                                <button class="btn btn-danger" type="submit">Esborra</button>
+                                <button class="btn btn-danger" type="submit"> <i class="fas fa-trash-alt"></i> </button>
                             </form>
                         </td>
                     </tr>

@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Albara;
-use App\AlbaraItems;
 use App\Client;
+use App\AlbaraItems;
+use PDF;
 use Illuminate\Http\Request;
 
 use App\Http\Controllers\Controller;
@@ -88,6 +89,15 @@ class AlbaraController extends Controller
         //
         $albara = Albara::find($id);
         return view('albarans.show',compact('albara'));
+    }
+
+    public function pdf($id)
+    {
+        //
+        $albara = Albara::find($id);
+        $pdf = PDF::loadView('albarans.pdf', compact('albara'));
+
+        return $pdf->download('disney.pdf');
     }
 
     /**

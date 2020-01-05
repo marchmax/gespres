@@ -13,7 +13,7 @@
 <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card ">
-                <div class="card-header bg-warning"><h4> Edita albarà <small>{{$albara->any}}-{{$albara->numalbara}}</small><a class="btn btn-info float-right" href="{{ route('albarans.index') }}"> Torna</a></h4>
+                <div class="card-header bg-warning"><h4> Edita albarà <small>{{$albara->any}}-{{$albara->numalbara}}</small><a class="btn btn-info float-right" href="{{ route('albarans.index') }}"> <i class="fas fa-hand-point-left"></i>Torna</a></h4>
                 </div>
                 <div class="card-body">
                 <form action="{{ route('albarans.update',$albara->id) }}" method="POST">
@@ -83,8 +83,8 @@
                             <td>Preu</td>
                             <td>Total</td>
                             <th style="text-align: center;background: #eee">
-                                <a href="#" onclick="addRow()"> +
-                                    <i class="glyphicon glyphicon-plus"></i>
+                                <a href="#" onclick="addRow()">
+                                <i class="fas fa-plus-square"></i>
                                 </a>
                             </th>
                             </tr>
@@ -98,7 +98,7 @@
                                 <td><input type="text" name="preu[]" class="form-control " placeholder="" value="{{$it->preu}}"></td>
                                 <td><input type="text" name="totals[]" class="form-control " placeholder="" value="{{$it->total}}"></td>
                                 <td  style="text-align: center" class="remove">
-                                    <a href="#" class="btn btn-danger " onclick="deleteRow()"> -
+                                    <a href="#" class="btn btn-danger " onclick="deleteRow()">
                                         <i class="fa fa-times"></i>
                                     </a>
                                 </td>
@@ -110,7 +110,7 @@
             </div>
 
             <div class="col-xs-12 col-sm-12 col-md-12 text-center float-right">
-              <button type="submit" class="btn btn-primary">Actualitza</button>
+              <button type="submit" class="btn btn-primary"><i class="fas fa-sync-alt"></i>Actualitza</button>
             </div>
             </form>
             </div>
