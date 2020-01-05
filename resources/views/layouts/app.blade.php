@@ -41,13 +41,13 @@
                     @guest
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('albarans.index') }}">{{ __('Albarans') }}</a>
+                        <a class="nav-link" href="{{ route('albarans.index') }}">{{ __('Albarans') }} <i class="fas fa-th-list"></i> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('pressupostos.index') }}">{{ __('Pressupostos') }}</a>
+                        <a class="nav-link" href="{{ route('pressupostos.index') }}">{{ __('Pressupostos') }} <i class="fas fa-clipboard-list"></i> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('clients.index') }}">{{ __('Clients') }}</a>
+                        <a class="nav-link" href="{{ route('clients.index') }}">{{ __('Clients') }} <i class="fas fa-user-friends"></i> </a>
                     </li>
                     @endguest
                     </ul>
@@ -57,7 +57,7 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }} <i class="fas fa-user-circle"></i> </a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
@@ -67,14 +67,14 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ Auth::user()->name }} <i class="fas fa-user-circle"></i> <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
+                                        {{ __('Logout') }} <i class="fas fa-sign-out-alt"></i>
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
