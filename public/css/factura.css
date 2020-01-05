@@ -1,0 +1,471 @@
+html,body {
+	padding: 0;
+	margin: 0;
+	font-family: arial,sans-serif;
+}
+* html code {
+	font-size: 105%;
+}
+
+@media screen {
+	.main_factura {
+		margin: 0 auto;
+		width: 800px;
+		padding: 0 10px;
+	}
+	.info, .totals {
+		width: 100%;
+	}
+	.descripcio {
+		min-height: 400px;
+	}
+}
+@media print
+{
+	body { height: 210mm; width: 297mm }
+	.main_factura {
+		margin: 0 auto;
+		width: 260mm;
+		padding: 0 10px;
+	}
+	.info, .totals {
+		width: 250mm;
+	}
+	.totals {
+		bottom: 0px;
+		clear: both;
+	}
+	.descripcio {
+		min-height: 900px;
+	}
+}
+
+.opcions_factura {
+	text-align: center;
+	margin: 0 auto;
+	padding: 20px;
+	width: 800px;
+	background: #ccc;
+}
+
+.header_factura {
+	width: 100%;
+	font-size: 12pt;
+}
+
+.header_factura .logo, .header_factura .dades {
+	width: 50%;
+	padding: 35px 20px 15px 20px;
+}
+.header_factura .dades {
+	width: 30%;
+}
+
+.info {
+	border: 0;
+	font-size: 14pt;
+}
+
+.empresa, .dades_factura {
+	width: 50%;
+	padding: 20px 15px;
+}
+
+.empresa {
+	border: 1px solid #ccc;
+}
+
+.descripcio {
+	clear: both;
+	width: 100%;
+	margin-top: 60px;
+}
+
+.resum_pagina {
+	text-align: right;
+}
+
+.main_factura table {
+	margin-bottom: 10px;
+}
+
+.main_factura tr.header td {
+	text-align: right;
+	padding-right: 8px;
+	margin: 0 3px;
+	font-weight: bold;
+	color: #000;
+	background: #eee;
+	vertical-align: middle;
+	height: 40px;
+	border: 1px solid #ccc;
+	font-size: 12pt;
+}
+
+.main_factura tr.fila td.esquerra, .main_factura tr.header td.concepte {
+	width: 400px;
+	text-align: left;
+}
+
+.main_factura tr.fila td {
+	padding: 5px;
+	padding-right: 12px;
+	width: 120px;
+	text-align: right;
+	font-size: 12pt;
+	margin-left: 5px;
+}
+
+.descripcio table {
+	border: 1px solid #ccc;
+}
+
+.totals table {
+	border: 1px solid #ccc;
+	width: 360px;
+	text-size: 12pt;
+}
+
+.totals tr.fila {
+	vertical-align: top;
+}
+
+.totals td {
+	text-align: right;
+}
+
+.totals td.info {
+	width: 460px;
+	text-align: left;
+	font-size: 12pt;
+}
+
+.nom_producte{  
+	overflow:hidden;
+}
+
+p.dades_empresa {
+	font-size: 11pt;
+}
+
+.peu {
+	clear: both;
+	font-size: 7pt;
+}
+
+# Formulari factures
+.span12 {
+	margin-bottom: 20px;
+}
+.grup_esquerra, .grup_dreta {
+	display: block;
+	float: left;
+	margin-left: 20px;
+}
+#dades_client {
+	margin-top: 20px;
+	height: 135px;
+}
+
+.grup_esquerra .control-group, .grup_dreta .control-group {
+	margin-bottom: 10px;
+}
+.grup_esquerra .control-label, .grup_dreta .control-label {
+	width: 115px;
+}
+	
+.grup_esquerra .controls, .grup_dreta .controls {
+	margin-left: 125px;
+}
+	
+.dreta {
+	text-align: right;
+}
+
+.fila td {
+	vertical-align: top;
+}
+
+tr.fila textarea, tr.fila select, tr.fila input[type="text"] {
+	margin-bottom: 1px;
+}
+
+tr.fila textarea {
+	/*height: 18px;*/
+}
+
+input.quantitat_producte {
+	color: #555;
+	border: 1px solid #CCC;
+}
+
+input.error, input.stock_insuficient {
+	color: #C00;
+	border: 1px solid #CC0000;
+}
+
+label.error {
+	color: #c00;
+	font-size: 8pt;
+	font-style: italic;
+}
+
+#resum_totals {
+	text-align: right;
+	margin-right: 20px;
+}
+
+#resum_totals  #total_net {
+	font-weight: bold;
+}
+
+
+.CSSTableGenerator {
+	margin:0px;padding:0px;
+	width:100%;
+	box-shadow: 10px 10px 5px #888888;
+	border:1px solid #3f7f00;
+	
+	-moz-border-radius-bottomleft:0px;
+	-webkit-border-bottom-left-radius:0px;
+	border-bottom-left-radius:0px;
+	
+	-moz-border-radius-bottomright:0px;
+	-webkit-border-bottom-right-radius:0px;
+	border-bottom-right-radius:0px;
+	
+	-moz-border-radius-topright:0px;
+	-webkit-border-top-right-radius:0px;
+	border-top-right-radius:0px;
+	
+	-moz-border-radius-topleft:0px;
+	-webkit-border-top-left-radius:0px;
+	border-top-left-radius:0px;
+}.CSSTableGenerator table{
+    border-collapse: collapse;
+    border-spacing: 0;
+	width:100%;
+	height:100%;
+	margin:0px;padding:0px;
+}.CSSTableGenerator tr:last-child td:last-child {
+	-moz-border-radius-bottomright:0px;
+	-webkit-border-bottom-right-radius:0px;
+	border-bottom-right-radius:0px;
+}
+.CSSTableGenerator table tr:first-child td:first-child {
+	-moz-border-radius-topleft:0px;
+	-webkit-border-top-left-radius:0px;
+	border-top-left-radius:0px;
+}
+.CSSTableGenerator table tr:first-child td:last-child {
+	-moz-border-radius-topright:0px;
+	-webkit-border-top-right-radius:0px;
+	border-top-right-radius:0px;
+}.CSSTableGenerator tr:last-child td:first-child{
+	-moz-border-radius-bottomleft:0px;
+	-webkit-border-bottom-left-radius:0px;
+	border-bottom-left-radius:0px;
+}.CSSTableGenerator tr:hover td{
+	
+}
+.CSSTableGenerator tr:nth-child(odd){ 
+	background-color:#1D771D; /* #1D771D #d4ffaa #5cb85c*/
+}
+
+.CSSTableGenerator tr:nth-child(odd){ 
+	background-color:#5cb85c; 
+	color:#ffffff;
+}
+.CSSTableGenerator tr:nth-child(even){ 
+	background-color:#ffffff; 
+
+}.CSSTableGenerator td{
+	vertical-align:middle;
+	border:1px solid #3f7f00;
+	border-width:0px 1px 1px 0px;
+	text-align:left;
+	padding:7px;
+	font-size:12px;
+	font-family:Verdana;
+	font-weight:normal;
+	color:#000000;
+}.CSSTableGenerator td{
+	vertical-align:middle;
+	border:1px solid #3f7f00;
+	border-width:0px 1px 1px 0px;
+	text-align:left;
+	padding:7px;
+	font-size:12px;
+	font-family:Verdana;
+	font-weight:italic;
+	color:#000000;
+}
+.CSSTableGenerator tr:last-child td{
+	border-width:0px 1px 0px 0px;
+}.CSSTableGenerator tr td:last-child{
+	border-width:0px 0px 1px 0px;
+}.CSSTableGenerator tr:last-child td:last-child{
+	border-width:0px 0px 0px 0px;
+}
+/*.CSSTableGenerator tr:first-child td{
+	background:-o-linear-gradient(bottom, #5fbf00 5%, #3f7f00 100%);	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5fbf00), color-stop(1, #3f7f00) );
+	background:-moz-linear-gradient( center top, #5fbf00 5%, #3f7f00 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#5fbf00", endColorstr="#3f7f00");	
+	background: -o-linear-gradient(top,#5fbf00,3f7f00);
+
+	background-color:#5fbf00;
+	border:0px solid #3f7f00;
+	text-align:center;
+	border-width:0px 0px 1px 1px;
+	font-size:14px;
+	font-family:Verdana;
+	font-weight:bold;
+	color:#ffffff;
+}
+.CSSTableGenerator tr:first-child:hover td{
+	background:-o-linear-gradient(bottom, #5fbf00 5%, #3f7f00 100%);	
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #5fbf00), color-stop(1, #3f7f00) );
+	background:-moz-linear-gradient( center top, #5fbf00 5%, #3f7f00 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#5fbf00", endColorstr="#3f7f00");	
+	background: -o-linear-gradient(top,#5fbf00,3f7f00);
+
+	background-color:#5fbf00;
+}*/
+.CSSTableGenerator tr:first-child td:first-child{
+	border-width:0px 0px 1px 0px;
+}
+.CSSTableGenerator tr:first-child td:last-child{
+	border-width:0px 0px 1px 1px;
+}
+.esquerra {
+	float: left;
+	margin: 5px;
+	padding: 15px;
+	width: 200px;
+	height: 200px;
+	border: 0px solid black;
+} 
+
+.verd
+{
+	background: green;
+	color: white;
+	text-align: right;
+}
+
+.negreta
+{
+	font-weight: bold;
+	text-transform: uppercase;
+}
+
+.titol_document{
+	text-align: right;
+	font-weight: bold;
+	font-size: 20pt;
+	color: #7A9C59;
+	font-style: italic;;
+}
+
+.camp{
+	font-weight: bold;
+}
+
+
+.botonera_esq{
+	float:left;
+	margin: 5px;
+	padding: 15px;
+}
+
+.img_llista{
+	width:32px;
+	height: auto;
+}
+
+/*######## Smart Green ########*/
+.smart-green {
+    margin-left:auto;
+    margin-right:auto;
+
+    max-width: 500px;
+    background: #F8F8F8;
+    padding: 30px 30px 20px 30px;
+    font: 12px Arial, Helvetica, sans-serif;
+    color: #666;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+}
+.smart-green h1 {
+    font: 24px "Trebuchet MS", Arial, Helvetica, sans-serif;
+    padding: 20px 0px 20px 40px;
+    display: block;
+    margin: -30px -30px 10px -30px;
+    color: #FFF;
+    background: #9DC45F;
+    text-shadow: 1px 1px 1px #949494;
+    border-radius: 5px 5px 0px 0px;
+    -webkit-border-radius: 5px 5px 0px 0px;
+    -moz-border-radius: 5px 5px 0px 0px;
+    border-bottom:1px solid #89AF4C;
+
+}
+.smart-green h1>span {
+    display: block;
+    font-size: 11px;
+    color: #FFF;
+}
+
+.smart-green label {
+    display: block;
+    margin: 0px 0px 5px;
+}
+.smart-green label>span {
+    float: left;
+    margin-top: 10px;
+    color: #5E5E5E;
+}
+.smart-green input[type="text"], .smart-green input[type="email"], .smart-green textarea, .smart-green select {
+    color: #555;
+    height: 30px;
+    line-height:15px;
+    width: 100%;
+    padding: 0px 0px 0px 10px;
+    margin-top: 2px;
+    border: 1px solid #E5E5E5;
+    background: #FBFBFB;
+    outline: 0;
+    -webkit-box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
+    box-shadow: inset 1px 1px 2px rgba(238, 238, 238, 0.2);
+    font: normal 14px/14px Arial, Helvetica, sans-serif;
+}
+.smart-green textarea{
+    height:100px;
+    padding-top: 10px;
+}
+.smart-green select {
+    background: url('down-arrow.png') no-repeat right, -moz-linear-gradient(top, #FBFBFB 0%, #E9E9E9 100%);
+    background: url('down-arrow.png') no-repeat right, -webkit-gradient(linear, left top, left bottom, color-stop(0%,#FBFBFB), color-stop(100%,#E9E9E9));
+   appearance:none;
+    -webkit-appearance:none; 
+   -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: '';
+    width:100%;
+    height:30px;
+}
+.smart-green .button {
+    background-color: #9DC45F;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-border-radius: 5px;
+    border: none;
+    padding: 10px 25px 10px 25px;
+    color: #FFF;
+    text-shadow: 1px 1px 1px #949494;
+}
+.smart-green .button:hover {
+    background-color:#80A24A;
+}

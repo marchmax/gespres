@@ -95,9 +95,10 @@ class AlbaraController extends Controller
     {
         //
         $albara = Albara::find($id);
-        $pdf = PDF::loadView('albarans.pdf', compact('albara'));
+        return view('albarans.pdf',compact('albara'));
 
-        return $pdf->download('disney.pdf');
+        //$pdf = PDF::loadView('albarans.pdf', compact('albara'));
+        //return $pdf->download('albara.pdf');
     }
 
     /**
