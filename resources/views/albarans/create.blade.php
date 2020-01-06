@@ -14,10 +14,7 @@
 <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header"><h4> Crea un nou albarà </h4>
-                <div class="pull-right">
-                        <a class="btn btn-warning" href="{{ route('albarans.index') }}"> <i class="fas fa-hand-point-left"></i>Torna</a>
-                    </div>
+                <div class="card-header"><h4> Crea un nou albarà <a class="btn btn-warning float-right" href="{{ route('albarans.index') }}"> <i class="fas fa-hand-point-left"></i>Torna</a></h4>
                 </div>
                 <div class="card-body">
 <form action="{{ route('albarans.store') }}" method="POST">
@@ -82,8 +79,8 @@
                 <th>Preu</th>
                 <th>Total</th>
                 <th style="text-align: center;background: #eee">
-                    <a href="#" onclick="addRow()"> +
-                        <i class="glyphicon glyphicon-plus"></i>
+                    <a href="#" onclick="addRow()">
+                        <i class="fas fa-plus-square"></i>
                     </a>
                 </th>
 
@@ -96,7 +93,7 @@
                 <td><input type="text" name="preu[]" class="form-control" placeholder=""></td>
                 <td><input type="text" name="totals[]" class="form-control" placeholder=""></td>
                 <td  style="text-align: center"  onclick="cannotdelete()">
-                    <a href="#" class="btn btn-danger remove"> -
+                    <a href="#" class="btn btn-danger remove">
                         <i class="fa fa-times"></i>
                     </a>
                 </td>

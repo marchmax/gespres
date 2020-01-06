@@ -26,10 +26,10 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-success shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/home') }}">
-                <img src="images/logo_2.png" height="50px" width="50px">
+                    <img src="images/logo_2.png" height="50px" width="50px">
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -47,7 +47,13 @@
                         <a class="nav-link" href="{{ route('pressupostos.index') }}">{{ __('Pressupostos') }} <i class="fas fa-clipboard-list"></i> </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('clients.index') }}">{{ __('Clients') }} <i class="fas fa-user-friends"></i> </a>
+                        <a class="nav-link" href="{{ route('clients.index') }}">{{ __('Clients') }} <i class="fas fa-address-card"></i> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('users.index') }}">{{ __('Usuaris') }} <i class="fas fa-users"></i> </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">{{ __('Configuració') }} <i class="fas fa-cogs"></i> </a>
                     </li>
                     @endguest
                     </ul>

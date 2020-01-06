@@ -17,12 +17,12 @@ public function index()
 {
     if(request()->ajax()) {
         return datatables()->of(User::select('*'))
-        ->addColumn('action', 'action_button')
+        ->addColumn('action', 'usuaris.action_button')
         ->rawColumns(['action'])
         ->addIndexColumn()
         ->make(true);
     }
-    return view('list');
+    return view('usuaris.list');
 }
 
 

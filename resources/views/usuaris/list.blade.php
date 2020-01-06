@@ -1,25 +1,19 @@
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-<!-- CSRF Token -->
-<meta name="csrf-token" content="{{ csrf_token() }}">
-<title>Laravel DataTables Users</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css" />
-<link  href="https://cdn.datatables.net/1.10.16/css/jquery.dataTables.min.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.js"></script>
-<script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-</head>
-<body>
-
+@extends('layouts.app')
+@section('content')
 <div class="container">
-<h2>Laravel DataTable Ajax Crud Tutorial - <a href="https://www.tutsmake.com" target="_blank">TutsMake</a></h2>
-<br>
-<a href="javascript:void(0)" class="btn btn-info ml-3" id="create-new-user">Add New</a>
-<br><br>
+@if ($message = Session::get('success'))
+        <div class="alert alert-success">
+            <p>{{ $message }}</p>
+        </div>
+    @endif
+<div class="row justify-content-center">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">Llista d'usuaris <a href="{{ route('users.create') }}" class="btn btn-info ml-3 pull-right" > Nou usuari <i class="fas fa-plus-square"></i> </a>
+                <a href="javascript:void(0)" class="btn btn-info ml-3 float-rigth" id="create-new-user">Add New <i class="fas fa-plus-square"></i> </a>
+                </div>
 
+                <div class="card-body">
 <table class="table table-bordered table-striped" id="laravel_datatable">
    <thead>
       <tr>
@@ -165,4 +159,4 @@ if ($("#userForm").length > 0) {
   })
 }
 </script>
-</html>
+@endsection
