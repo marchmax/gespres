@@ -1,5 +1,8 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,3 +31,12 @@ Route::resource('albarans', 'AlbaraController')->middleware('auth');
 Route::get('albarans/pdf/{id}','AlbaraController@pdf')->name('albarans.pdf')->middleware('auth');
 Route::resource('clients', 'ClientController')->middleware('auth');
 Route::resource('pressupostos', 'PressupostController')->middleware('auth');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
